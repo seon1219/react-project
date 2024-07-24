@@ -4,8 +4,10 @@ export default function Header() {
   return (
     <>
       <nav className="flex items-center bg-white shadow dark:bg-gray-800">
-        <p>로고?</p>
-        <div className="container flex items-center justify-between p-6 mx-auto text-gray-600 capitalize dark:text-gray-300">
+        <Link href={"/"}>
+          <img src="/images/home.svg" className="w-10 m-5" />
+        </Link>
+        <div className="container flex items-center justify-end p-6 mx-auto text-gray-600 capitalize dark:text-gray-300">
           <Link href={"/"}>
             <button className="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6">
               Home
