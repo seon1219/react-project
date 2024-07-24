@@ -1,0 +1,4 @@
+html,
+body {
+  cursor: url(/public/cursor.cur) 5 5, pointer;
+}

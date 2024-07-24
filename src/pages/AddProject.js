@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 
-export default function AddProject({ close }) {
+export default function AddProject({ close, router }) {
   const [title, setTitle] = useState("");
   const [detail, setDetail] = useState("");
 
@@ -18,7 +18,7 @@ export default function AddProject({ close }) {
   };
 
   return (
-    <div className="w-1/4 border rounded-2xl p-10 absolute z-10 bg-white">
+    <div className="md:w-1/2 w-3/4 border rounded-2xl p-10 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 bg-white ">
       <div className="grid  gap-8 grid-cols-1">
         <div className="flex flex-col ">
           <div className="flex flex-col sm:flex-row items-center">

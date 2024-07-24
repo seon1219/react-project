@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <>
-      <nav className="flex items-center bg-white shadow dark:bg-gray-800">
+    <header>
+      <nav className="flex items-center bg-white shadow dark:bg-gray-800 fixed z-20 w-full">
         <Link href={"/"}>
           <img src="/images/home.svg" className="w-10 m-5" />
         </Link>
@@ -24,15 +24,8 @@ export default function Header() {
           >
             project
           </a>
-
-          <a
-            href="https://github.com/seon1219"
-            className="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
-          >
-            github
-          </a>
         </div>
       </nav>
-    </>
+    </header>
   );
 }
