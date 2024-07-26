@@ -1,4 +1,7 @@
 html,
 body {
-  cursor: url(/public/cursor.cur) 5 5, pointer;
+  cursor: url(/cursor.cur), pointer;
+}
+:hover {
+  cursor: url(/cursor.cur), pointer;
 }
