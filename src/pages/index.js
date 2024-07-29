@@ -14,8 +14,8 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       <Header refs={refs} />
-      <Main refs={refs} />
-      <Login />
+      <Main refs={refs} admin={admin} />
+      <Login admin={admin} setAdmin={setAdmin} />
       <Footer />
     </div>
   );

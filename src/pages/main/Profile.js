@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Profile() {
   return (
-    <div className="container w-full bg-white  shadow-lg    transform   duration-200 easy-in-out rounded-3xl">
+    <div className="w-full bg-white  shadow-lg    transform   duration-200 easy-in-out rounded-3xl">
       <div className=" h-32 overflow-hidden rounded-t-3xl">
         <img
           className="w-full"

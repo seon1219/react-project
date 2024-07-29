@@ -21,4 +21,25 @@ router.get("/getProjects", async (req, res) => {
   }
 });
 
+router.post("/addStack", async (req, res) => {
+  const { name, type } = req.body;
+  const query = `INSERT INTO stacks(name, type) VALUES(?, ?)`;
+  const [result] = await db.query(query, [name, type]);
+  if (result.affectedRows > 0) {
+    res.status(200).json({ success: true });
+  } else {
+    res.status(200).json({ success: false });
+  }
+});
+
+router.get("/getStacks", async (req, res) => {
+  const query = "SELECT * FROM stacks";
+  const [result] = await db.query(query);
+  if (result.length > 0) {
+    res.status(200).json({ success: true, list: result });
+  } else {
+    res.status(200).json({ success: false });
+  }
+});
+
 module.exports = router;

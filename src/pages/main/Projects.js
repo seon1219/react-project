@@ -29,11 +29,6 @@ export default function Projects() {
             <div className="mt-4">
               <h1 className="text-2xl font-bold text-gray-700">{v.title}</h1>
               <p className="text-sm mt-2 text-gray-700">상세 내용</p>
-              <div className="mt-3 space-x-4 flex p-1">
-                <div className="p-1 border-4 rounded-full cursor-pointer hover:border-green-200 hover:scale-105 transition transform duration-200">
-                  이미지?
-                </div>
-              </div>
             </div>
           </div>
         );

@@ -1,7 +1,7 @@
 .loginBox {
   position: fixed;
-  top: 65%;
-  left: 93%;
+  top: 60%;
+  left: 95%;
   width: 300px;
   height: 100px;
   transform: translate(-100%, -100%);
@@ -9,12 +9,26 @@
 
 .loginBtn {
   position: fixed;
-  top: 95%;
-  left: 85%;
+  top: 90%;
+  left: 90%;
   border: 1px solid;
 }
+@media screen and (max-width: 748px) {
+  .loginBox {
+    position: fixed;
+    top: 65%;
+    left: 95%;
+    width: 300px;
+    height: 100px;
+    transform: translate(-100%, -100%);
+  }
 
-@media screen {
+  .loginBtn {
+    position: fixed;
+    top: 94%;
+    left: 78%;
+    border: 1px solid;
+  }
 }
 
 /* 위는 버튼 */

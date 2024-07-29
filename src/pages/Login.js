@@ -2,7 +2,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-export default function Login() {
+export default function Login({ admin, setAdmin }) {
   const router = useRouter();
   const [show, setShow] = useState(false);
   const [id, setId] = useState("");
@@ -21,7 +21,8 @@ export default function Login() {
     console.log(res);
     if (res.data.success) {
       alert("성공");
-      sessionStorage.setItem("admin", true);
+      setAdmin(true);
+      setShow(false);
       router.replace(router.asPath);
     } else {
       alert("실패");
@@ -36,69 +37,90 @@ export default function Login() {
     }
   };
 
+  const logout = () => {
+    setAdmin(false);
+    router.replace(router.asPath);
+  };
+
   return (
-    <div>
-      {show ? (
-        <div className="loginBox">
-          <div className="mx-auto max-w-md px-6 py-12 bg-gray-100 border-0 shadow-lg sm:rounded-3xl">
-            <h1 className="text-2xl font-bold mb-8 text-center">Login</h1>
-            <form id="form" noValidate>
-              <div className="relative z-0 w-full mb-5">
-                <input
-                  value={id}
-                  onChange={(e) => setId(e.target.value)}
-                  type="text"
-                  name="name"
-                  placeholder=" "
-                  required
-                  className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-                />
-                <label
-                  htmlFor="name"
-                  className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
-                >
-                  Enter ID
-                </label>
-                <span className="text-sm text-red-600 hidden" id="error">
-                  Name is required
-                </span>
-              </div>
+    <>
+      {!admin ? (
+        <div>
+          {show ? (
+            <div className="loginBox">
+              <div className="mx-auto max-w-md px-6 py-12 bg-gray-100 border-0 shadow-lg sm:rounded-3xl">
+                <h1 className="text-2xl font-bold mb-8 text-center">Login</h1>
+                <form id="form" noValidate>
+                  <div className="relative z-0 w-full mb-5">
+                    <input
+                      value={id}
+                      onChange={(e) => setId(e.target.value)}
+                      type="text"
+                      name="name"
+                      placeholder=" "
+                      required
+                      className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+                    />
+                    <label
+                      htmlFor="name"
+                      className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+                    >
+                      Enter ID
+                    </label>
+                    <span className="text-sm text-red-600 hidden" id="error">
+                      Name is required
+                    </span>
+                  </div>
 
-              <div className="relative z-0 w-full mb-5">
-                <input
-                  value={pw}
-                  onChange={(e) => setPw(e.target.value)}
-                  type="password"
-                  name="password"
-                  placeholder=" "
-                  className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-                />
-                <label
-                  htmlFor="password"
-                  className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
-                >
-                  Enter Password
-                </label>
-                <span className="text-sm text-red-600 hidden" id="error">
-                  Password is required
-                </span>
-              </div>
+                  <div className="relative z-0 w-full mb-5">
+                    <input
+                      value={pw}
+                      onChange={(e) => setPw(e.target.value)}
+                      type="password"
+                      name="password"
+                      placeholder=" "
+                      className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+                    />
+                    <label
+                      htmlFor="password"
+                      className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+                    >
+                      Enter Password
+                    </label>
+                    <span className="text-sm text-red-600 hidden" id="error">
+                      Password is required
+                    </span>
+                  </div>
 
-              <button
-                onClick={goLogin}
-                id="button"
-                type="button"
-                className="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-sky-300 hover:bg-sky-600 hover:shadow-lg focus:outline-none"
-              >
-                Login
-              </button>
-            </form>
-          </div>
+                  <button
+                    onClick={goLogin}
+                    id="button"
+                    type="button"
+                    className="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-sky-300 hover:bg-sky-600 hover:shadow-lg focus:outline-none"
+                  >
+                    Login
+                  </button>
+                </form>
+              </div>
+            </div>
+          ) : null}
+          <button
+            onClick={onLogin}
+            className="loginBtn mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500"
+          >
+            수정
+          </button>
         </div>
-      ) : null}
-      <button onClick={onLogin} className="loginBtn">
-        수정
-      </button>
-    </div>
+      ) : (
+        <div>
+          <button
+            onClick={logout}
+            className="loginBtn mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500"
+          >
+            완료
+          </button>
+        </div>
+      )}
+    </>
   );
 }
